@@ -1,0 +1,18 @@
+{
+  "default-registry": {
+    "kind": "git",
+    "baseline": "f4b262b259145adb2ab0116a390b08642489d32b",
+    "repository": "https://github.com/microsoft/vcpkg"
+  },
+  "registries": [
+    {
+      "kind": "git",
+      "baseline": "b67329ed438b716444bf4f74705fcbe0b65f7736",
+      "repository": "https://github.com/lerppana/vcpkg-registry",
+      "packages": [
+        "hypodermic",
+        "reload-engine"
+      ]
+    }
+  ]
+}
