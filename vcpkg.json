@@ -1,0 +1,26 @@
+{
+  "name": "game",
+  "version-string": "0.0.0",
+  "dependencies": [
+    {
+      "name": "reload-engine",
+      "features": [
+        "tools"
+      ]
+    }
+  ],
+  "features": {
+    "editor": {
+      "description": "editor for engine",
+      "dependencies": [
+        {
+          "name": "reload-engine",
+          "features": [
+            "editor",
+            "tools"
+          ]
+        }
+      ]
+    }
+  }
+}
