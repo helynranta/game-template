@@ -1,0 +1,71 @@
+name: build
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: ${{ matrix.os }}-build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-latest ]
+        include:
+          - os: windows-latest
+            generator: Ninja
+    env:
+      VCPKG_FEATURE_FLAGS: manifests,versions,registries
+      VCPKG_MANIFEST_NO_DEFAULT_FEATURES: OFF
+      buildDir: ${{ github.workspace }}/b/vcpkg_submod_manifest
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+    steps:
+      - uses: actions/checkout@v3
+        name: pull sources
+        with:
+          lfs: true
+
+      - uses: lerppana/install_vulkan_sdk@main
+
+      - uses: lerppana/blender_portable@windows
+
+      - uses: lerppana/configure_vcpkg@main
+        with:
+          PAT: ${{ secrets.PAT }}
+
+      - name: cmake config
+        shell: 'pwsh'
+        working-directory: ${{ github.workspace }}
+        env:
+          GITHUB_AUTHORIZATION_TOKEN: '${{ secrets.PAT }}'
+        run: |
+          cmake -G "${{ matrix.generator }}" -DCMAKE_BUILD_TYPE=Release -B build -DCMAKE_TOOLCHAIN_FILE="${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake" -D CMAKE_WIN32_EXECUTABLE=True
+
+      - name: cmake build
+        shell: 'pwsh'
+        run: cmake --build build
+
+      - name: cmake install
+        shell: 'pwsh'
+        run: cmake --install build --prefix="${{ github.workspace }}/install" -v --strip
+
+      - name: save build output
+        uses: actions/upload-artifact@v2
+        with:
+          name: windows-output
+          path: ${{ github.workspace }}/install/bin
+          retention-days: 2
+
+      - name: collect build logs
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: windows-build-logs
+          path: |
+            ${{ env.buildDir }}/**/*.log
+            ${{ github.workspace }}/vcpkg/buildtrees/**/*.log
+            ${{ github.workspace }}/build/**/*.log
+          retention-days: 2
