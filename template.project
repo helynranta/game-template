@@ -1,0 +1,17 @@
+{
+    "startup_scene":"fs1://scenes/load.scene",
+    "name": "template",
+    "dynamic_libraries": ["template"],
+    "data_storages": [
+        {
+            "name": "fs0",
+            "archive_path": "${binaryDir}/asset0.data"
+        },
+        {
+            "name": "fs1",
+            "archive_path": "${binaryDir}/asset1.data",
+            "folder_path": "${projectDir}/assets/resources.json"
+        }
+    ],
+    "fonts": [ ]
+}
