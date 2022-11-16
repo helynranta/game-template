@@ -8,7 +8,7 @@ include(engine_create)
 
 set(PROJECT_FILE "${CMAKE_CURRENT_LIST_DIR}/template.project")
 
-engine_create_plugin(template
+engine_create_plugin(${PROJECT_NAME}
         PROJECT_FILE "${PROJECT_FILE}"
 
         SOURCE_FILES
