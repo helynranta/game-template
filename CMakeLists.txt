@@ -6,9 +6,10 @@ find_package(engine CONFIG REQUIRED)
 
 include(engine_create)
 
+set(PROJECT_FILE "${CMAKE_CURRENT_LIST_DIR}/template.project")
+
 engine_create_plugin(template
-        PROJECT_FILE
-            "${CMAKE_CURRENT_LIST_DIR}/template.project"
+        PROJECT_FILE "${PROJECT_FILE}"
 
         SOURCE_FILES
             src/plugin.cpp
@@ -20,7 +21,7 @@ engine_create_plugin(template
 
 engine_create_launcher(
         SOURCE_DIR "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include/engine/launcher"
-        PROJECT_FILE "${CMAKE_SOURCE_DIR}/template.project"
+        PROJECT_FILE "${PROJECT_FILE}"
 )
 
 target_precompile_headers(${PROJECT_NAME} PUBLIC src/engine.hxx)
