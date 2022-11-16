@@ -4,7 +4,7 @@
 
 namespace lerppana
 {
-    struct load : core::scene
+    struct [[le::scene]] load : core::scene
     {
         explicit load() :
           core::scene("fs1://scenes/load.scene")
