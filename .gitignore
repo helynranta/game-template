@@ -357,3 +357,6 @@ cmake-build-release/
 # reload-engine
 src/generated/
 .editor
+
+# apple 
+.DS_Store
