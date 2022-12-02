@@ -357,6 +357,12 @@ cmake-build-release/
 # reload-engine
 src/generated/
 .editor
+*.blend1
+*.blend2
+*.glb
+*.model.mesh
+*.skin.mesh
+*.anim
 
 # apple 
 .DS_Store
