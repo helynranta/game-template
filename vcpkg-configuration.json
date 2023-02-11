@@ -1,13 +1,13 @@
 {
   "default-registry": {
     "kind": "git",
-    "baseline": "266e4910c6c6a2fe1b20a1bdb5cec4e16f190f01",
+    "baseline": "36fb23307e10cc6ffcec566c46c4bb3f567c82c6",
     "repository": "https://github.com/microsoft/vcpkg"
   },
   "registries": [
     {
       "kind": "git",
-      "baseline": "63e79b5f10c26c557e86eaed645961cb9639ea1d",
+      "baseline": "bbf95b8769e83647c1b0137a69d0ebe6e9fdbf40",
       "repository": "https://github.com/lerppana/vcpkg-registry",
       "packages": [
         "hypodermic",
