@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.21.2)
 
 project(template CXX)
 
-find_package(engine CONFIG REQUIRED)
+include(CMakeFindDependencyMacro)
+find_dependency(engine CONFIG REQUIRED)
 
 include(engine_create)
 
@@ -16,6 +17,7 @@ engine_create_plugin(${PROJECT_NAME}
 
         INCLUDE_FILES
             src/scenes/load.hpp
+            src/groups.hpp
             src/tags.hpp
         )
 
