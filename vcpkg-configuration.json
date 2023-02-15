@@ -7,7 +7,7 @@
   "registries": [
     {
       "kind": "git",
-      "baseline": "bbf95b8769e83647c1b0137a69d0ebe6e9fdbf40",
+      "baseline": "f612106fd657175b8f7f7cd9e6d97052c6cae5a5",
       "repository": "https://github.com/lerppana/vcpkg-registry",
       "packages": [
         "hypodermic",
