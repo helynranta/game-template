@@ -28,11 +28,11 @@ jobs:
         with:
           lfs: true
 
-      - uses: lerppana/install_vulkan_sdk@main
+      - uses: helynranta/install_vulkan_sdk@main
 
-      - uses: lerppana/blender_portable@windows
+      - uses: helynranta/blender_portable@windows
 
-      - uses: lerppana/configure_vcpkg@main
+      - uses: helynranta/configure_vcpkg@main
         with:
           PAT: ${{ secrets.PAT }}
 
